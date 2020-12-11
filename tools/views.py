@@ -66,3 +66,7 @@ def base64(request):
         elif request.POST['direct'] == 'toV':
             message['result'] = function._base64_to_string(string)
     return render(request,'tools/base64.html',message)
+
+def wordcet4(request):
+    message = function._get_logined_message(request)
+    return render(request,'tools/word.html',message)
