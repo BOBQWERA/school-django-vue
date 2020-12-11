@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Change{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/form.css">
+{% endblock css %}
+
+{% block body %}
+<div class="form-box">
+    <div class="message">
+        <p>Change</p>
+    </div>
+<form action="/user/{{user.username}}/change" method="post" autocomplete="off">
+    {% csrf_token %}
+    <div id="input-container">
+        <input type="text" name="nickname" id="nickname" placeholder="nickname:{{user.nickname}}">
+        <input type="password" name="password" id="password" placeholder="password">
+        <input type="password" name="newpassword" id="newpassword" placeholder="new-password(if you want to change password)">
+        <input type="password" name="repeat" id="repeat" placeholder="repeat-password(if you want to change password)">
+        <input type="tel" name="telephone" id="telephone" placeholder="telephone:{{user.telephone}}">
+        <input type="email" name="email" id="email" placeholder="email:{{user.email}}">
+    </div>
+    <button type="submit" class="submit">change</button>
+</form>
+</div>
+<style>
+    .form-box{
+        height: 450px;
+    }
+    #input-container input{
+        width: 80%;
+    }
+</style>
+{% if wrong %}
+<script>
+    alert({{wrong_message}});
+</script>
+{% endif %}
+<script>
+    document.getElementsByClassName('head')[1].setAttribute('id','ani')
+</script>
+{% endblock %}

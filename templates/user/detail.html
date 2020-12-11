@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Detail{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/detail.css">
+{% endblock css %}
+
+{% block body %}
+<div class="message">
+    <h1>{{user.username}}的资料</h1>
+    <p>昵称：{{user.nickname}}</p>
+    <p>电话：{{user.telephone}}</p>
+    <p>邮箱：{{user.email}}</p>
+    <p>信用：{{user.credit}}</p>
+    <p>积分：{{user.score}}</p>
+    <p>最后登录时间：{{user.last_logined|date:'Y-m-d P'}}</p>
+</div>
+{% if logined %}
+<div class="change">
+    <a href="/user/{{username}}/change" class="btn">修改个人信息</a>
+</div>
+{% endif %}
+{% endblock %}

@@ -32,7 +32,6 @@ def _add_friend(username, friend):
 
 
 def _apply_add_friend(fromUsername, toUsername, say):
-    # print(fromUsername,toUsername)
     from_user = User.objects.get(username=fromUsername)
     to_user = User.objects.get(username=toUsername)
     Apply.objects.create(from_user=from_user, to_user=to_user, say=say)
@@ -41,6 +40,37 @@ def _apply_add_friend(fromUsername, toUsername, say):
 def _base64_to_string(base64String):
     return base64.b64decode(base64String).decode('utf8')
 
+
+def xor(a,b):
+    return a and b or not a and not b
+
+#TODO:There should be a message check.
+def _change_user_message(request,username):
+    nickname = request.POST.get('nickname')
+    password = request.POST.get('password')
+    new_password = request.POST.get('newpassword')
+    repeat_password = request.POST.get('repeat')
+    telephone = request.POST.get('telephone')
+    email = request.POST.get('email')
+    re_url = None
+    if not _check_user(username,password):
+        return False,'password wrong!',None
+    if not xor(new_password,repeat_password):
+        return False,'New password not complete!',None
+    user = _get_user_by_username(username)
+    if nickname:
+        user.nickname = nickname
+    if new_password == repeat_password and new_password:
+        user.password = _password_to_md5(new_password)
+        re_url = '/user/login'
+    else:
+        return False,'input the same password in repeat block',None
+    if telephone:
+        user.telephone = telephone
+    if email:
+        user.email = email
+    user.save()
+    return True,None,re_url
 
 def _check_same_password(password, repeat):
     return password == repeat
@@ -192,7 +222,6 @@ def _get_logined_message(request):
         user = _get_user_by_username(username)
         if user.usertype == 'SU':
             message['SU'] = True
-    print(message)
     return message
 
 
@@ -276,7 +305,6 @@ def _get_visited_name(username):
 
 
 def _get_waiting(fromUsername, toUsername):
-    # print(fromUsername,toUsername)
     return User.objects.get(username=toUsername).friend_apply.filter(username=fromUsername)
 
 

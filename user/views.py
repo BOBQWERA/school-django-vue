@@ -73,18 +73,6 @@ def userspace(request,username):
         return render(request,'user/self_space.html',message)
     return render(request,'user/user_space.html',message)
 
-# def friend(request,username):
-#     fromUsername = function._logined(request)
-#     function._apply_add_friend(fromUsername,username)
-#     if function._self_space(request,username):
-#         message={'personal':True}
-#     else:
-#         message={'personal':False}
-#     message.update(function._get_logined_message(request))
-#     message.update(function._get_space_message(username))
-#     message['mastername']=function._get_nikename_by_username(username)
-#     message['wait'] = True
-#     return render(request,'user/user_space.html',message)
 
 def add_friend(request,username,friend):
     function._add_friend(username,friend)
@@ -97,3 +85,30 @@ def refuse(request,username,friend):
 def sign(request,username):
     function._sign(username)
     return redirect(f'/user/{username}')
+
+def detail(request,username):
+    if not function._has_user(username):
+        raise Http404('user not found')
+    message = function._get_logined_message(request)
+    if function._self_space(request,username):
+        message['self'] = True
+    message['user'] = function._get_user_by_username(username)
+    return render(request,'user/detail.html',message)
+
+def change(request,username):
+    if not function._self_space(request,username):
+        raise Http404('page not found')
+    message = function._get_logined_message(request)
+    message['user'] = function._get_user_by_username(username)
+    if request.method == 'POST':
+        success,m,re_url=function._change_user_message(request,username)
+        if success:
+            if not re_url:
+                from_url = request.headers.get("Referer")
+            else:
+                from_url = re_url
+            return redirect(from_url)
+        else:
+            message['wrong'] = True 
+            message['wrong_message'] = m
+    return render(request,'user/change.html',message)
