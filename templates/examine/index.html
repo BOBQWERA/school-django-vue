@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}站务管理{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/examine.css">
+{% endblock css %}
+
+{% block body %}
+<div class="articles">
+    {% for article in articles %}
+    <div class="article">
+        <a class="headline" href="/blog/article/{{article.id}}/">{{article.headline}}</a>
+        <p>{{article.abstract}}</p>
+        <p class="author">--{{article.author.username}}</p>
+        <p class="pub-time">{{article.pub_time|date:'Y-m-d P'}}</p>
+        <a href="/blog/article/{{article.id}}/success">审核通过</a>
+        <a href="/blog/article/{{article.id}}/fail">打回</a>
+    </div>
+    {% empty %}
+    <p>空空如也</p>
+    {% endfor %}
+</div>
+<div class="reports">
+    {% for article in report_blogs %}
+    <div class="article">
+        <a class="headline" href="/blog/article/{{article.id}}/">{{article.headline}}</a>
+        <p>{{article.abstract}}</p>
+        <p class="author">--{{article.author.username}}</p>
+        <p class="pub-time">{{article.pub_time|date:'Y-m-d P'}}</p>
+        <a href="/blog/article/{{article.id}}/delete">删除</a>
+        <a href="/blog/article/{{article.id}}/success">忽略</a>
+    </div>
+    {% empty %}
+    <p>空空如也</p>
+    {% endfor %}
+    <div class="mid"></div>
+    {% for comment,content,append_file in comments %}
+        <div class="comment">
+            <a href="/user/{{comment.publisher.username}}/" class="u-name">{{comment.publisher.nickname}}</a>
+            <p class="time">{{comment.pub_time}}</p>
+            {{ content }}
+            <p class="floor">#{{comment.floor}}</p>
+            <p class="pid">No.{{comment.id}}</p>
+            <a href="/forum/{{comment.posting.section.urlname}}/posting/{{comment.posting.id}}/" class="origin">原帖</a>
+            {% if append_file %}
+            <a href="/files/{{append_file.urlname}}" class="file">附件：{{append_file.name}}</a>
+            {% endif %}
+            <a href="/forum/comment/{{comment.id}}/delete" class="delete">删除</a>
+            <a href="/forum/comment/{{comment.id}}/pass" class="ignore">忽略</a>
+        </div>
+    {% empty %}
+    <p>空空如也</p>
+    {% endfor %}
+</div>
+<script>
+    document.getElementsByClassName('head')[6].setAttribute('id','ani')
+</script>
+{% endblock %}

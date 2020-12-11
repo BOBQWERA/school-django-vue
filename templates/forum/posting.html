@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}Posting{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/posting.css">
+{% endblock css %}
+
+{% block body %}
+<a href="../.." id="return">返回</a>
+<h1 class="section">{{section_name}}</h1>
+<div class="posting">
+    <h2 class="headline">{{posting.headline}}</h2>
+    <div class="message">
+        <a href="/user/{{posting.landlord.username}}/">{{posting.landlord.nickname}}</a>
+        <h3>发表时间:{{posting.pub_time}}</h3>
+        <h3>更新于:{{posting.update_time}}</h3>
+    </div>
+    <div class="text">{{postingHtml}}</div>
+
+    <div class="comments">
+        {% for comment,content,append_file in comments %}
+        <div class="comment">
+            <a href="/user/{{comment.publisher.username}}/" class="u-name">{{comment.publisher.nickname}}</a>
+            <p class="time">{{comment.pub_time}}</p>
+            {{ content }}
+            <p class="floor">#{{comment.floor}}</p>
+            <p class="pid">No.{{comment.id}}</p>
+            {% if append_file %}
+            <a href="/files/{{append_file.urlname}}" class="file">附件：{{append_file.name}}</a>
+            {% endif %}
+            {% if logined %}
+            {% if selfposting %}
+            <a href="/forum/comment/{{comment.id}}/delete" class="hid delete">删除</a>
+            {% endif %}
+            <a href="/forum/comment/{{comment.id}}/report" class="hid report">举报</a>
+            {% endif %}
+        </div>
+        {% empty %}
+        <div class="none">
+            <p>还没人评论啊~别让楼主寂寞啊</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% if logined %}
+<form action="" method="post" id="postdata" enctype="multipart/form-data">
+    {% csrf_token %}
+    <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+    <div class="sel">
+    <p>颜文字</p><select id="h-emot-select" onchange="freshArea()"><option value="">无</option><option value="|∀ﾟ">|∀ﾟ</option><option value="(´ﾟДﾟ`)">(´ﾟДﾟ`)</option><option value="(;´Д`)">(;´Д`)</option><option value="(｀･ω･)">(｀･ω･)</option><option value="(=ﾟωﾟ)=">(=ﾟωﾟ)=</option><option value="| ω・´)">| ω・´)</option><option value="|-` )">|-` )</option><option value="|д` )">|д` )</option><option value="|ー` )">|ー` )</option><option value="|∀` )">|∀` )</option><option value="(つд⊂)">(つд⊂)</option><option value="(ﾟДﾟ≡ﾟДﾟ)">(ﾟДﾟ≡ﾟДﾟ)</option><option value="(＾o＾)ﾉ">(＾o＾)ﾉ</option><option value="(|||ﾟДﾟ)">(|||ﾟДﾟ)</option><option value="( ﾟ∀ﾟ)">( ﾟ∀ﾟ)</option><option value="( ´∀`)">( ´∀`)</option><option value="(*´∀`)">(*´∀`)</option><option value="(*ﾟ∇ﾟ)">(*ﾟ∇ﾟ)</option><option value="(*ﾟーﾟ)">(*ﾟーﾟ)</option><option value="(　ﾟ 3ﾟ)">(　ﾟ 3ﾟ)</option><option value="( ´ー`)">( ´ー`)</option><option value="( ・_ゝ・)">( ・_ゝ・)</option><option value="( ´_ゝ`)">( ´_ゝ`)</option><option value="(*´д`)">(*´д`)</option><option value="(・ー・)">(・ー・)</option><option value="(・∀・)">(・∀・)</option><option value="(ゝ∀･)">(ゝ∀･)</option><option value="(〃∀〃)">(〃∀〃)</option><option value="(*ﾟ∀ﾟ*)">(*ﾟ∀ﾟ*)</option><option value="( ﾟ∀。)">( ﾟ∀。)</option><option value="( `д´)">( `д´)</option><option value="(`ε´ )">(`ε´ )</option><option value="(`ヮ´ )">(`ヮ´ )</option><option value="σ`∀´)">σ`∀´)</option><option value=" ﾟ∀ﾟ)σ"> ﾟ∀ﾟ)σ</option><option value="ﾟ ∀ﾟ)ノ">ﾟ ∀ﾟ)ノ</option><option value="(╬ﾟдﾟ)">(╬ﾟдﾟ)</option><option value="(|||ﾟдﾟ)">(|||ﾟдﾟ)</option><option value="( ﾟдﾟ)">( ﾟдﾟ)</option><option value="Σ( ﾟдﾟ)">Σ( ﾟдﾟ)</option><option value="( ;ﾟдﾟ)">( ;ﾟдﾟ)</option><option value="( ;´д`)">( ;´д`)</option><option value="(　д ) ﾟ ﾟ">(　д ) ﾟ ﾟ</option><option value="( ☉д⊙)">( ☉д⊙)</option><option value="(((　ﾟдﾟ)))">(((　ﾟдﾟ)))</option><option value="( ` ・´)">( ` ・´)</option><option value="( ´д`)">( ´д`)</option><option value="( -д-)">( -д-)</option><option value="(>д<)">(&gt;д&lt;)</option><option value="･ﾟ( ﾉд`ﾟ)">･ﾟ( ﾉд`ﾟ)</option><option value="( TдT)">( TдT)</option><option value="(￣∇￣)">(￣∇￣)</option><option value="(￣3￣)">(￣3￣)</option><option value="(￣ｰ￣)">(￣ｰ￣)</option><option value="(￣ . ￣)">(￣ . ￣)</option><option value="(￣皿￣)">(￣皿￣)</option><option value="(￣艸￣)">(￣艸￣)</option><option value="(￣︿￣)">(￣︿￣)</option><option value="(￣︶￣)">(￣︶￣)</option><option value="ヾ(´ωﾟ｀)">ヾ(´ωﾟ｀)</option><option value="(*´ω`*)">(*´ω`*)</option><option value="(・ω・)">(・ω・)</option><option value="( ´・ω)">( ´・ω)</option><option value="(｀・ω)">(｀・ω)</option><option value="(´・ω・`)">(´・ω・`)</option><option value="(`・ω・´)">(`・ω・´)</option><option value="( `_っ´)">( `_っ´)</option><option value="( `ー´)">( `ー´)</option><option value="( ´_っ`)">( ´_っ`)</option><option value="( ´ρ`)">( ´ρ`)</option><option value="( ﾟωﾟ)">( ﾟωﾟ)</option><option value="(oﾟωﾟo)">(oﾟωﾟo)</option><option value="(　^ω^)">(　^ω^)</option><option value="(｡◕∀◕｡)">(｡◕∀◕｡)</option><option value="/( ◕‿‿◕ )\">/( ◕‿‿◕ )\</option><option value="ヾ(´ε`ヾ)">ヾ(´ε`ヾ)</option><option value="(ノﾟ∀ﾟ)ノ">(ノﾟ∀ﾟ)ノ</option><option value="(σﾟдﾟ)σ">(σﾟдﾟ)σ</option><option value="(σﾟ∀ﾟ)σ">(σﾟ∀ﾟ)σ</option><option value="|дﾟ )">|дﾟ )</option><option value="┃電柱┃">┃電柱┃</option><option value="ﾟ(つд`ﾟ)">ﾟ(つд`ﾟ)</option><option value="ﾟÅﾟ )　">ﾟÅﾟ )　</option><option value="⊂彡☆))д`)">⊂彡☆))д`)</option><option value="⊂彡☆))д´)">⊂彡☆))д´)</option><option value="⊂彡☆))∀`)">⊂彡☆))∀`)</option><option value="(´∀((☆ミつ">(´∀((☆ミつ</option></select>
+    </div>
+    <input type="file" name="file" id="file">
+    <button type="submit" form="postdata" id="sendcomment">comment</button>
+</form>
+{% endif %}
+<script>
+    document.getElementsByClassName('head')[2].setAttribute('id', 'ani')
+    function freshArea(){
+        var com      = document.getElementById("comment");
+        var em       = document.getElementById("h-emot-select");
+        var index_em = em.selectedIndex;
+        var em_text  = em.options[index_em].text;
+        var comment  = com.value;
+        var content  = comment + em_text;
+        com.value = content;
+        com.focus(); 
+    }
+</script>
+{% endblock %}

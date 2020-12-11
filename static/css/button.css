@@ -1,0 +1,41 @@
+.btn {
+    margin: 10px 10px 10px 50px;
+    width: 100px;
+    height: 30px;
+    background: none;
+    font-size: 20px;
+    color: #a29bfe;
+    border: 3px solid ;
+    font-weight: 700;
+    display: inline-block;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.btn::before,.btn::after{
+    content: "";
+    position: absolute;
+    background:pink;
+    width: 14px;
+    height: 4px;
+    transform: skewX(50deg);
+    transition: .4s linear;
+}
+
+.btn::before{
+    top: -4px;
+    left: 10%;
+}
+
+.btn::after{
+    bottom: -4px;
+    right: 10%;
+}
+
+.btn:hover::before{
+    left: 80%;
+}
+
+.btn:hover::after{
+    right: 80%;
+}

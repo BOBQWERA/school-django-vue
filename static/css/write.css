@@ -1,0 +1,46 @@
+.blog {
+    width: 100%;
+    text-align: center;
+    border-bottom: 3px solid #ff5e57;
+}
+
+#headline,#abstract{
+    background: none;
+    font-size: 20px;
+    border: 2px solid #f53b57;
+    border-radius: 8px;
+}
+
+#context{
+    background: none;
+    border-left: 3px solid #ff3f34;
+    border-right: 3px solid #ff3f34;
+    font-size: 20px;
+}
+
+
+p.head,p.text,p.abstract{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 30%;
+    margin-right: 30%;
+    font-size: 20px;
+    border-top: 2px solid #ff3f34;
+    border-bottom: 2px solid#ff3f34;
+    text-align: center;
+}
+
+.input-container{
+    text-align: center;
+}
+
+#headline {
+    margin-top: 10px;
+    display: inline-block;
+}
+
+#context {
+    display: inline-block;
+    overflow: scroll;
+    clear: right;
+}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Tools{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/tools.css">
+{% endblock css %}
+
+{% block body %}
+<h1 class="headline">小工具集合</h1>
+<div class="tools">
+    {% for tool in tools %}
+    <div class="tool">
+        <a href="{{tool.urlname}}">{{tool.name}}</a>
+    </div>
+    {% endfor %}
+</div>
+<script>
+    document.getElementsByClassName('head')[5].setAttribute('id','ani')
+</script>
+{% endblock %}

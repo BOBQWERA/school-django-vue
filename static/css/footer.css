@@ -1,0 +1,22 @@
+footer{
+    position: absolute;
+    height: 40px;
+    width: 100%;
+    bottom: 0;
+    z-index: 10;
+    box-shadow: 0 0 2px 0 #000;
+}
+
+
+footer nav a{
+    text-decoration: none;
+    line-height: 40px;
+    display: inline-block;
+    width: 10%;
+    text-align: center;
+    color: #2d3436;
+}
+
+footer nav a:hover{
+    color: white;
+}

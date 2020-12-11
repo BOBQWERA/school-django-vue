@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}编写博客{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/blog_write.css">
+<link rel="stylesheet" href="/static/css/button.css">
+<link rel="stylesheet" href="/static/css/write.css">
+<script src="/static/ckeditor/ckeditor-full/ckeditor.js"></script>
+{% endblock css %}
+
+{% block body %}
+<h1 class="blog">每日随笔</h1>
+<form action="/blog/send_article/" method="post" id="blog">
+    {% csrf_token %}
+    <div class="input-container">
+    <p class="head">标题</p><input type="text" name="headline" id="headline">
+    <p class="abstract">摘要</p><input type="text" name="abstract" id="abstract">
+    <p class="text">内容</p><textarea name="editor" id="context" cols="50" rows="30"></textarea>
+    <div id="share"><input type="checkbox" name="share" id="share" value="share">是否分享</div>
+    <button class="btn" type="submit" form="blog" value="Submit">upload</button>
+    </div>
+</form>
+<script type="text/javascript">
+    CKEDITOR.replace('editor',{
+        language:'zh-cn',
+        image_previewText:' ',
+        height:350,
+    });
+    var htmlData = CKEDITOR.instances.context.getData();
+</script>
+<style>
+    .btn{
+        color:skyblue;
+    }
+</style>
+<script>
+    document.getElementsByClassName('head')[1].setAttribute('id','ani')
+</script>
+{% endblock %}

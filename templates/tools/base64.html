@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Base64{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/base64.css">
+{% endblock css %}
+
+{% block body %}
+<div class="client">
+<form action="" method="post">
+    {% csrf_token %}
+    <textarea name="string" id="string" cols="30" rows="10"></textarea>
+    <input type="radio" name="direct" value="toB" checked>转base64
+    <input type="radio" name="direct" value="toV">转自然语言
+    <button type="submit">计算</button>
+</form>
+<div class="result">
+    <p>{{result}}</p>
+</div></div>
+<script>
+    document.getElementsByClassName('head')[5].setAttribute('id','ani')
+</script>
+{% endblock %}

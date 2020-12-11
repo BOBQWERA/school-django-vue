@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Forum{% endblock title%}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/forum.css">
+{% endblock css %}
+
+{% block body %}
+<h1 class="forum">工程论坛</h1>
+<div class="sections">
+    {% for section in sections %}
+    <div class="section">
+        <a href="/forum/{{section.urlname}}">{{section.name}}</a>
+    </div>
+    {% endfor %}
+</div>
+<script>
+    document.getElementsByClassName('head')[2].setAttribute('id','ani')
+</script>
+{% endblock %}

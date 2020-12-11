@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Check{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/form.css">
+{% endblock css %}
+
+{% block body %}
+<div class="form-box">
+    <div class="message">
+        <p>for {{urlname}}</p>
+    </div>
+<form action="" method="post" enctype="multipart/form-data" id="upform">
+    {% csrf_token %}
+    <div id="input-container">
+        <input type="password" name="password" id="password" placeholder="password">
+    </div>
+    <button class="submit" type="submit" form="upform" value="Submit">Check</button>
+</form>
+</div>
+<script>
+    document.getElementsByClassName('head')[5].setAttribute('id','ani')
+</script>
+{% endblock %}

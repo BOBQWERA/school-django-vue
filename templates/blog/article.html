@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Article{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/article.css">
+{% endblock css %}
+
+{% block body %}
+<div class="article">
+<h1>{{article.headline}}</h1>
+<div class="message">
+<a href="/user/{{article.author.username}}/">{{article.author.username}}</a>
+<h2>{{article.pub_time|date:'Y-m-d P'}}</h2></div>
+<div class="text">{{articleHtml}}</div>
+</div>
+{% if logined %}
+<div class="other">
+    {% if have_not_like %}
+    <a href="like" class="like">点赞</a>
+    {% endif %}
+    <a href="report" class="report">举报</a>
+</div>
+{% endif %}
+<script>
+    document.getElementsByClassName('head')[1].setAttribute('id','ani')
+</script>
+{% endblock %}

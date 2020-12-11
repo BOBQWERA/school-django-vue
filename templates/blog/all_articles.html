@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}all blogs{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/button.css">
+<link rel="stylesheet" href="/static/css/space.css">
+<link rel="stylesheet" href="/static/css/blog.css">
+{% endblock css %}
+
+{% block body %}
+<h1 id="username">发现</h1>
+<div class="blog">
+    {% if has_blog %}
+    {% for article in articles %}
+    <a class="article" href="/blog/article/{{article.id}}/">
+        <h3>{{article.headline}}</h3>
+        <p>{{article.abstract}}</p>
+        <p class="author">--{{article.author.username}}</p>
+        <p class="pub-time">{{article.pub_time|date:'Y-m-d P'}}</p>
+    </a>
+    {% endfor %}
+    {% else %}
+    <div class="none"><p>空空如也~</p></div>
+    {% endif %}
+</div>
+<script>
+    document.getElementsByClassName('head')[1].setAttribute('id','ani')
+</script>
+{% endblock %}

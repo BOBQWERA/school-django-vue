@@ -1,0 +1,67 @@
+.article{
+    width: 50%;
+    margin-left: 25%;
+    height: calc(100% - 90px);
+}
+
+.article .text{
+    overflow: scroll;
+    height: calc(100% - 80px);
+}
+
+.article h1 {
+    text-align: center;
+    border-bottom: 2px solid;
+
+}
+
+.article .message{
+    width: 100%;
+    text-align: center;
+}
+
+.article h2{
+    display: inline;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 20px;
+}
+
+.article a{
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    display: inline;
+    margin: 20px;
+}
+
+.article p{
+    margin: 5px;
+}
+
+.text * {
+    background: none;
+}
+
+.other {
+    position: absolute;
+    right: 10%;
+    bottom: 100px;
+}
+
+.other a{
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    margin-left: 20px;
+    padding: 5px;
+    font-size: 18px;
+    background: gray;
+    border-radius: 10px;
+}
+
+.other a:hover{
+    background: #555;
+}
+

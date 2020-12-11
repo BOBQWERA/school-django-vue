@@ -1,0 +1,134 @@
+* {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    border: 0;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
+
+body,html{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    background-image: linear-gradient(to top, #9795f0 0%, #fbc8d4 100%);
+}
+
+.form-box {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 300px;
+    width: 500px;
+    box-shadow: 0 6px 30px 0 #000;
+    border-radius: 5px;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.message {
+    margin: 10px;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    border-bottom: 2px solid rgb(222, 247, 0);
+    margin-bottom: 20px;
+}
+
+#input-container input {
+    background: none;
+    margin: 10px;
+    color: rgb(27, 10, 173);
+    border-bottom: 1px solid #999;
+    font-size: 16px;
+    width: 60%;
+    transition: .2s;
+    margin-bottom: 30px;
+}
+
+#input-container input:hover {
+    border-bottom: 1px solid #fff;
+}
+
+.submit input {
+    margin: 10px;
+    background: none;
+    padding: 5px;
+    border-radius: 15px;
+    font-size: 14px;
+    border: 2px solid rgb(235, 226, 103);
+    cursor: auto;
+    transition: .5s;
+    margin-bottom: 40px;
+    cursor: pointer;
+}
+
+.submit input:hover {
+    background-color: rgb(235, 226, 103);
+}
+
+.other a{
+    text-decoration: none;
+    display: inline-block;
+    color: rgb(72, 31, 187);
+    width: 30%;
+    margin: 10px;
+    transition: .2s;
+}
+
+.other a:hover{
+    color: rgb(14, 0, 53);
+}
+
+.submit {
+    clear: both;
+    display: inline-block;
+    background: none;
+    text-decoration: none;
+    margin-left: 10px;
+    margin-bottom: 50px;
+    height: 30px;
+    width: 100px;
+    color: #fbc8d0;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    border: 4px solid;
+    clear: both;
+    position: relative;
+}
+
+.submit::before,.submit::after{
+    content: "";
+    position: absolute;
+    background:#f7d794;
+    width: 14px;
+    height: 4px;
+    transform: skewX(50deg);
+    transition: .2s linear;
+}
+
+.submit::before{
+    top: -4px;
+    left: 10%;
+}
+
+.submit::after{
+    bottom: -4px;
+    right: 10%;
+}
+
+.submit:hover::before{
+    left: 80%;
+}
+
+.submit:hover::after{
+    right: 80%;
+}

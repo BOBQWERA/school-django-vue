@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Blog{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/button.css">
+<link rel="stylesheet" href="/static/css/space.css">
+<link rel="stylesheet" href="/static/css/blog.css">
+{% endblock css %}
+
+{% block body %}
+<h1 id="username">发现</h1>
+<div class="blog">
+    {% if has_blog %}
+    {% for article in articles %}
+    <a class="article" href="/blog/article/{{article.id}}/">
+        <h3>{{article.headline}}</h3>
+        <p>{{article.abstract}}</p>
+        <p class="like">点赞({{article.number_of_likes}})</p>
+        <p class="author">--{{article.author.username}}</p>
+        <p class="pub-time">{{article.pub_time|date:'Y-m-d P'}}</p>
+    </a>
+    {% endfor %}
+    {% if more %}
+    <a href="/blog/all/" id="more-blog" class="btn" style="color: skyblue;
+    text-decoration: none;
+    line-height: 30px;
+    text-align: center;
+    border: 3px solid skyblue;
+    margin-left: 0;">more</a>
+    {% endif %}
+    {% else %}
+    <div class="none"><p>空空如也~</p></div>
+    {% endif %}
+</div>
+{% if logined %}
+<aside><h2 class="personal forum">你的博客</h2>
+    {% for article in personal_blog %}
+    <a href="/blog/article/{{article.id}}/" class="personal-blog">
+    {{article.headline}}
+    </a>
+    {% endfor %}
+    {% if not_has_personal_blog %}
+    <div class="per-none"><p>空空如也~快来</p><a href="/blog/write/" class="write">写博客吧</a></div>
+    {% endif %}
+{% endif %}
+</aside>
+<script>
+    document.getElementsByClassName('head')[1].setAttribute('id','ani')
+</script>
+{% endblock %}

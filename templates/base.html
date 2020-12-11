@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <link rel="stylesheet" href="/static/css/bar.css">
+    {% block css %}{% endblock css %}
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <a href="/" class="head">主页</a>
+            <a href="/blog/" class="head">博客</a>
+            <a href="/forum/" class="head">论坛</a>
+            <a href="/user/login/" class="head">登录</a>
+            <a href="/user/register/" class="head">注册</a>
+            {% if logined %}
+            <a href="/tools/" class="head">小工具</a>
+            {% if SU %}
+            <a href="/examine/" class="head">站务管理</a>
+            {% endif %}
+            {% endif %}
+        </nav>
+        {% if logined %}
+        <div class="user"><a href="/user/{{username}}" id='user'>{{username}}</a></div>
+        <div id="exit"><a href="/user/exit/" >exit</a></div>
+        {% endif %}
+    </div>
+    {% block body %}{% endblock body %}
+    <footer>
+        <nav>
+            <a href="/">联系我们</a>
+            <a href="/">报错</a>
+        </nav>
+    </footer>
+</body>
+</html>

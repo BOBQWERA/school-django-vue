@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/form.css">
+{% endblock css %}
+
+{% block body %}
+<div class="form-box">
+    <div class="message">
+        <p>Login</p>
+    </div>
+<form action="/user/login/" method="post" autocomplete="off" id="blog">
+    {% csrf_token %}
+    <div id="input-container">
+        <input type="text" name="username" id="username" placeholder="username">
+        <input type="password" name="password" id="password" placeholder="password">
+    </div>
+    <button class="submit" type="submit" form="blog" value="Submit">login</button>
+</form>
+    <div class="other">
+        <a href="/" class="forget">forget password</a>
+        <!-- <button class="submit" type="submit" form="blog" value="Submit">forget</button> -->
+        <a href="/user/register/" class="register">register</a>
+        <!-- <button class="submit" type="submit" form="blog" value="Submit">register</button> -->
+    </div>
+</div>
+{% if login_failed %}
+<script type="text/javascript">
+    alert("账号或密码错误！");
+</script>
+{% endif %}
+<script>
+    document.getElementsByClassName('head')[3].setAttribute('id','ani')
+</script>
+{% endblock %}

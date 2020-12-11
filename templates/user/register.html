@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/form.css">
+<link rel="stylesheet" href="/static/css/register.css">
+{% endblock css %}
+
+{% block body %}
+<div class="form-box">
+    <div class="message">
+        <p>Register</p>
+    </div>
+<form action="/user/register/" method="post" autocomplete="off">
+    {% csrf_token %}
+    <div id="input-container">
+        <input type="text" name="username" id="username" placeholder="username">
+        <input type="text" name="nickname" id="nickname" placeholder="nickname">
+        <input type="password" name="password" id="password" placeholder="password">
+        <input type="password" name="repeat" id="repeat" placeholder="repeat-password">
+        <input type="tel" name="telephone" id="telephone" placeholder="telephone">
+        <input type="email" name="email" id="email" placeholder="email">
+    </div>
+    <button type="submit" class="submit">register</button>
+</form>
+    <div class="other">
+    </div>
+</div>
+{% if blank %}
+<!---->
+{% elif repeat_failed %}
+<script type="text/javascript">
+    alert("请保证两次输入密码相同！");
+</script>
+{% elif repeat_username %}
+<script type="text/javascript">
+    alert(" 用户名已被注册");
+</script>
+{% endif %}
+<script>
+    document.getElementsByClassName('head')[4].setAttribute('id','ani')
+</script>
+{% endblock %}

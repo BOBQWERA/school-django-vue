@@ -1,0 +1,45 @@
+.client {
+    height: 400px;
+    width: 90vw;
+}
+
+textarea{
+    width: 90vw;
+    height: 300px;
+    margin-left: 5%;
+    margin-top: 40px;
+    resize: none;
+    border: 3px solid pink;
+    border-radius: 10px;
+    font-size: 18px;
+    overflow: scroll;
+}
+
+button {
+    width: 90vw;
+    height: 30px;
+    margin-left: 5%;
+    background: pink;
+    font-size: 18px;
+    font-weight: 550;
+}
+
+button:hover{
+    background: #eb4d4b;
+}
+
+.result {
+    width: 100vw;
+    border-top: 2px solid gray;
+    text-align: center;
+}
+
+.result p{
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+input{
+    text-align: center;
+    margin-left: 50%;
+}

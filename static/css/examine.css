@@ -1,0 +1,78 @@
+.articles {
+    width: 49vw;
+    overflow: scroll;
+    height: calc(100vh - 100px);
+}
+
+.article {
+    margin-top: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid gray;
+    cursor: pointer;
+}
+
+.article:hover{
+    border-bottom: 2px solid black;
+}
+
+.article a{
+    color: black;
+}
+
+.article a.headline {
+    display: inline-block;
+    font-size: 20px;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.reports {
+    width: 49vw;
+    overflow: scroll;
+    height: calc(100vh - 100px);
+    position: absolute;
+    right: 0;
+    top: 60px;
+
+}
+
+.comment {
+    width: 60%;
+    border-bottom: 1px solid gray;
+    position: relative;
+}
+
+.comment a{
+    color: black;
+}
+
+.comment a.u-name{
+    text-decoration: none;
+    color: black;
+    font-weight: 550;
+    font-size: 16px;
+    display: inline;
+}
+
+.comment .time{
+    display: inline;
+    margin-left: 30px;
+}
+
+.comment p{
+    margin-left: 20px;
+}
+
+.comment .floor,.comment .pid{
+    text-align: right;
+}
+
+.comment .pid{
+    color: gray;
+    font-size: 12px;
+}
+
+.mid {
+    margin-top: 50px;
+    border-bottom: 2px solid gray;
+}

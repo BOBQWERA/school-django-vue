@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article</title>
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <link rel="stylesheet" href="/static/css/bar.css">
+    
+<link rel="stylesheet" href="/static/css/article.css">
+
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <a href="/" class="head">主页</a>
+            <a href="/blog/" class="head">博客</a>
+            <a href="/forum/" class="head">论坛</a>
+            <a href="/user/login/" class="head">登录</a>
+            <a href="/user/register/" class="head">注册</a>
+            
+            <a href="/tools/" class="head">小工具</a>
+            
+            <a href="/examine/" class="head">站务管理</a>
+            
+            
+        </nav>
+        
+        <div class="user"><a href="/user/BOBQWERA" id='user'>BOBQWERA</a></div>
+        <div id="exit"><a href="/user/exit/" >exit</a></div>
+        
+    </div>
+    
+<div class="article">
+<h1>haha</h1>
+<div class="message">
+<a href="/user/BOBQWERA/">BOBQWERA</a>
+<h2>2020-12-05 5:18 p.m.</h2></div>
+<div class="text"><p>lalala</p>
+</div>
+</div>
+{% if logined %}
+<div class="other">
+    <a href="like" class="like">点赞</a>
+    <a href="report" class="report">举报</a>
+</div>
+{% endif %}
+<script>
+    document.getElementsByClassName('head')[1].setAttribute('id','ani')
+</script>
+
+    <footer>
+        <nav>
+            <a href="/">联系我们</a>
+            <a href="/">报错</a>
+        </nav>
+    </footer>
+</body>
+</html>

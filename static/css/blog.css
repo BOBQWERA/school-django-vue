@@ -1,0 +1,61 @@
+.none p,.none a{
+    display: inline;
+}
+
+.none a{
+    text-decoration: none;
+    color: black;
+}
+
+.personal-blog{
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    margin-left: 50%;
+    margin-top: 10px;
+    border-bottom: 2px solid gray;
+}
+
+p.author {
+    width: 100%;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+}
+
+p.pub-time {
+    width: 100%;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+}
+
+p.like {
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+}
+
+.per-none {
+    margin-top: 10px;
+    display: inline-block;
+    margin-left: 30%;
+}
+
+.per-none p{
+    display: inline;
+}
+
+.per-none a{
+    display: inline;
+    text-decoration: none;
+    color: black;
+}
+
+a#more-blog {
+    color: skyblue;
+    text-decoration: none;
+    line-height: 30px;
+    text-align: center;
+    border: 3px solid skyblue;
+}

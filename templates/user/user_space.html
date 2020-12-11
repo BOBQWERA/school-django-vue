@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}person space{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/button.css">
+<link rel="stylesheet" href="/static/css/space.css">
+{% endblock css %}
+
+{% block body %}
+<h1 id="username">{{mastername}}的个人空间</h1>
+{% if logined %}
+{% if wait %}
+<button class="btn" id="follow" style="margin-left: 5%;">wait</button>
+{% else %}
+{% if not isfriend %}
+<form action="" method="post" id="addfriend">
+{% csrf_token %}
+<button class="btn" id="follow" form="addfriend" style="margin-left: 5%;">{{friend}}</button>
+<input type="text" placeholder="your message to add friend" name="say">
+</form>
+{% endif %}
+{% endif %}
+{% endif %}
+<div class="blog">
+    <h2 class="blog-title">ta写过的博客</h2>
+    {% if more %}
+    <button id="more-blog" class="btn">more</button>
+    {% endif %}
+    {% if has_blog %}
+    {% for article in articles %}
+    <a class="article" href="/blog/article/{{article.id}}/">
+        <h3>{{article.headline}}</h3>
+        <p>{{article.abstract}}</p>
+    </a>
+    {% endfor %}
+    {% else %}
+    <p>ta还没有写过博客~</p>
+    {% endif %}
+</div>
+<aside><a href="/" class="forum">他常逛的版面</a>
+    {% for section,urlname in sections %}
+    <a href="/forum/{{urlname}}/" class="section">{{section}}</a>
+    {% endfor %}
+</aside>
+<script>
+    document.getElementsByClassName('head')[1].setAttribute('id','ani')
+    function down(){
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET",'/user/add_friend/{{masterusername}}',false);
+        xmlHttp.send("{{username}}");
+        return xmlHttp.responseText;
+    }
+</script>
+{% endblock %}

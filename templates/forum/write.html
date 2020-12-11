@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}发帖{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/blog_write.css">
+<link rel="stylesheet" href="/static/css/button.css">
+<link rel="stylesheet" href="/static/css/write.css">
+<script src="/static/ckeditor/ckeditor-full/ckeditor.js"></script>
+{% endblock css %}
+
+{% block body %}
+<h1 class="blog">{{section_name}}</h1>
+<form action="/forum/{{urlname}}/send_posting/" method="post" id="blog">
+    {% csrf_token %}
+    <div class="input-container">
+    <p class="head">标题</p><input type="text" name="headline" id="headline">
+    <p class="text">内容</p><textarea name="editor" id="context" cols="50" rows="30"></textarea>
+    <input type="hidden" name="urlname" id="urlname" value="{{urlname}}">
+    <button class="btn" type="submit" form="blog" value="Submit">upload</button>
+    </div>
+</form>
+<script type="text/javascript">
+    CKEDITOR.replace('editor',{
+        language:'zh-cn',
+        image_previewText:' ',
+        height:350,
+    });
+    var htmlData = CKEDITOR.instances.context.getData();
+</script>
+<style>
+    .btn{
+        color:skyblue;
+    }
+</style>
+<script>
+    document.getElementsByClassName('head')[2].setAttribute('id','ani')
+</script>
+{% endblock %}

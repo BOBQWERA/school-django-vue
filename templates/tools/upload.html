@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/form.css">
+<link rel="stylesheet" href="/static/css/button.css">
+{% endblock css %}
+
+{% block body %}
+<div class="form-box">
+    <div class="message">
+        <p>Upload</p>
+    </div>
+<form action="" method="post" enctype="multipart/form-data" id="upform">
+    {% csrf_token %}
+    <div id="input-container">
+        <input type="file" name="file">
+        <input type="password" name="password" id="password" placeholder="password">
+    </div>
+    <button class="submit" type="submit" form="upform" value="Submit">Upload</button>
+</form>
+</div>
+<script>
+    document.getElementsByClassName('head')[5].setAttribute('id','ani')
+</script>
+{% endblock %}

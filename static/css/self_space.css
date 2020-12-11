@@ -1,0 +1,135 @@
+a.write,a.message,a.data {
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+a.write {
+    bottom: 10px;
+    right: 50px;
+}
+
+a.message {
+    bottom: 10px;
+    right: 200px;
+}
+
+a.data {
+    bottom: 10px;
+    right: 350px;
+}
+
+
+.per-none a{
+    display: inline;
+    text-decoration: none;
+    color: black;
+}
+
+.per-none p{
+    display: inline;
+}
+
+.self-message{
+    margin: 10px 10px 0 0;
+    height: 140px;
+    text-align: right;
+}
+
+.self-message .sign{
+    width: 100px;
+    height: 30px;
+    display: inline-block;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    background: #aaaaaa;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+.self-message .sign:hover{
+    background: #666666;
+}
+
+.self-message p{
+    margin-right: 0;
+    margin-left: 80%;
+    border-bottom: 1px solid gray;
+}
+
+.forum-box {
+    height: 150px;
+    text-align: right;
+}
+
+.forum-box a{
+    display: inline-block;
+    text-align: right;
+    margin: 0 0 0 50%;
+    width: 50%;
+}
+
+.forum-box a.forum {
+    margin: 0;
+    height: auto;
+}
+
+.friends {
+    height: 150px;
+    text-align: right;
+    overflow: scroll;
+}
+
+.friend {
+    margin-top: 5px;
+}
+
+.friends h2{
+    border-bottom: 2px solid gray;
+}
+
+.friend a{
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    margin-right: 2px;
+}
+
+.applys{
+    height: 150px;
+    text-align: right;
+    overflow: scroll;
+}
+
+.applys h2{
+    border-bottom: 2px solid gray;
+}
+
+.apply{
+    border-bottom: 1px solid gray;
+}
+
+.apply a{
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    margin-right: 2px;
+}
+
+.apply .op{
+    margin-left: 5px;
+    font-size: 14px;
+    background: #aaa;
+    border: 1px solid gray;
+    border-radius: 6px;
+}
+
+.apply .op:hover{
+    background: #666;
+}

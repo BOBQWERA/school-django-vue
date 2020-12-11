@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Section{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/section.css">
+{% endblock css %}
+
+{% block body %}
+<h1 class="section">{{section_name}}</h1>
+<aside>
+    {% for section in sections %}
+    <a href="/forum/{{section.urlname}}/" class="sections">{{section.name}}</a>
+    {% endfor %}
+</aside>
+<div class="postings">
+    {% if has_posting %}
+    {% for posting in postings %}
+    <a class="posting" href="/forum/{{urlname}}/posting/{{posting.id}}/">
+        <h3>{{posting.headline}}</h3>
+        <p class="author">--{{posting.landlord.username}}</p>
+        <p class="pub-time">{{posting.pub_time|date:'Y-m-d P'}}</p>
+    </a>
+    {% endfor %}
+    {% if more %}
+    <a href="/forum/{{urlname}}/all/" id="more-blog" class="btn" style="color: skyblue;
+    text-decoration: none;
+    line-height: 30px;
+    text-align: center;
+    border: 3px solid skyblue;
+    margin-left: 0;">more</a>
+    {% endif %}
+    {% else %}
+    <div class="none"><p>空空如也~</p></div>
+    {% endif %}
+</div>
+<div class="write"><a href="/forum/{{urlname}}/write/">发帖</a></div>
+<script>
+    document.getElementsByClassName('head')[2].setAttribute('id','ani')
+</script>
+{% endblock %}
