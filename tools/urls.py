@@ -8,5 +8,5 @@ urlpatterns = [
     path('download/<str:urlname>/',views.download,name='download'),
     path('md5/',views.md5,name='md5'),
     path('base64/',views.base64,name='base64'),
-    path('wordcet4/',views.wordcet4,name='cet4_words'),
+    path('word/',views.word,name='words'),
 ]

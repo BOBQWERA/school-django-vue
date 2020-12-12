@@ -67,6 +67,8 @@ def base64(request):
             message['result'] = function._base64_to_string(string)
     return render(request,'tools/base64.html',message)
 
-def wordcet4(request):
+def word(request):
     message = function._get_logined_message(request)
+    if request.method == "POST":
+        print(request.POST)
     return render(request,'tools/word.html',message)

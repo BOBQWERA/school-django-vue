@@ -13,10 +13,28 @@
     <div class="cet4">
         <h2>四级词汇</h2>
         <p>共{{cet4_num}}个</p>
-        <form action="" method="post" id="cet4">
+        <form action="" method="post" id="cet4" autocomplete="off">
             {% csrf_token %}
-            <input type="text" name="number" id="cet4-num" placeholder="每天背单词的数量">
+            <input type="text" name="cet4" id="cet4-num" placeholder="每天背单词的数量">
             <button type="submit" form="cet4">开始</button>
+        </form>
+    </div>
+    <div class="cet6">
+        <h2>六级词汇</h2>
+        <p>共{{cet6_num}}个</p>
+        <form action="" method="post" id="cet6" autocomplete="off">
+            {% csrf_token %}
+            <input type="text" name="cet6" id="cet6-num" placeholder="每天背单词的数量">
+            <button type="submit" form="cet6">开始</button>
+        </form>
+    </div>
+    <div class="tem8">
+        <h2>专八词汇</h2>
+        <p>共{{tem8_num}}个</p>
+        <form action="" method="post" id="tem8" autocomplete="off">
+            {% csrf_token %}
+            <input type="text" name="tem8" id="tem8-num" placeholder="每天背单词的数量">
+            <button type="submit" form="tem8">开始</button>
         </form>
     </div>
 </div>

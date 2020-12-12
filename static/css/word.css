@@ -15,6 +15,12 @@
     width: 32vw;
     height: calc(100vh - 300px);
     text-align: center;
+    border: 2px;
+}
+
+.cet4:hover,.cet6:hover,.tem8:hover{
+    border: 2px solid red;
+    border-radius: 20px;
 }
 
 .cet4{
@@ -63,3 +69,4 @@
 .start button:hover{
     background: gray;
 }
+
