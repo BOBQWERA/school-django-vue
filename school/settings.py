@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'tools',
     'imagedata',
     'examine',
+    'words',
 ]
 
 MIDDLEWARE = [

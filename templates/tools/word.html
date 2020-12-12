@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Word{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/word.css">
+{% endblock css %}
+
+{% block body %}
+{% if not start %}
+<div class="start">
+    <h1>选择你的背单词计划</h1>
+    <div class="cet4">
+        <h2>四级词汇</h2>
+        <p>共{{cet4_num}}个</p>
+        <form action="" method="post" id="cet4">
+            {% csrf_token %}
+            <input type="text" name="number" id="cet4-num" placeholder="每天背单词的数量">
+            <button type="submit" form="cet4">开始</button>
+        </form>
+    </div>
+</div>
+{% endif %}
+<script>
+    document.getElementsByClassName('head')[1].setAttribute('id', 'ani')
+</script>
+{% endblock %}

@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail</title>
+    <title>Word</title>
     <link rel="stylesheet" href="/static/css/header.css">
     <link rel="stylesheet" href="/static/css/footer.css">
     <link rel="stylesheet" href="/static/css/bar.css">
     
-<link rel="stylesheet" href="/static/css/detail.css">
+<link rel="stylesheet" href="/static/css/word.css">
 
 </head>
 <body>
@@ -24,18 +24,41 @@
         
     </div>
     
-<div class="message">
-    <h1>BOBQWERA的资料</h1>
-    <p>昵称：BOBQWERA</p>
-    <p>电话：15662849268</p>
-    <p>邮箱：1044285710@qq.com</p>
-    <p>信用：100</p>
-    <p>积分：18</p>
-    <p>最后登录时间：2020-12-02 5:22 p.m.</p>
+
+<div class="start">
+    <h1>选择你的背单词计划</h1>
+    <div class="cet4">
+        <h2>四级词汇</h2>
+        <p>共4025个</p>
+        <form action="" method="post" id="cet4">
+            <input type="hidden" name="csrfmiddlewaretoken" value="pvrW6skLRSBE8aEC2tVsBH8VormQ9FxaD7gixr8Fa7tsnqMf4ex1cgyMbnQMv2g0">
+            <input type="text" name="number" id="cet4-num" placeholder="每天背单词的数量">
+            <button type="submit" form="cet4">开始</button>
+        </form>
+    </div>
+    <div class="cet6">
+        <h2>六级词汇</h2>
+        <p>共5025个</p>
+        <form action="" method="post" id="cet6">
+            <input type="hidden" name="csrfmiddlewaretoken" value="pvrW6skLRSBE8aEC2tVsBH8VormQ9FxaD7gixr8Fa7tsnqMf4ex1cgyMbnQMv2g0">
+            <input type="text" name="number" id="cet4-num" placeholder="每天背单词的数量">
+            <button type="submit" form="cet6">开始</button>
+        </form>
+    </div>
+    <div class="tem8">
+        <h2>专八词汇</h2>
+        <p>共6025个</p>
+        <form action="" method="post" id="tem8">
+            <input type="hidden" name="csrfmiddlewaretoken" value="pvrW6skLRSBE8aEC2tVsBH8VormQ9FxaD7gixr8Fa7tsnqMf4ex1cgyMbnQMv2g0">
+            <input type="text" name="number" id="cet4-num" placeholder="每天背单词的数量">
+            <button type="submit" form="tem8">开始</button>
+        </form>
+    </div>
 </div>
-<div class="change">
-    <a href="btn" class="btn">修改个人信息</a>
-</div>
+
+<script>
+    document.getElementsByClassName('head')[1].setAttribute('id', 'ani')
+</script>
 
     <footer>
         <nav>
