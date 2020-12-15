@@ -18,6 +18,7 @@ from forum.models import Section, Posting, Comment
 from tools.models import Files, Tools
 from imagedata.models import Imagedata, IMAGE_TYPE_CHOICES
 from examine.models import Examine
+from words.models import WordPlan,WordData
 
 e_zonghe = Examine.objects.get(name='综合管理')
 e_shenhe = Examine.objects.get(name='内容审核')
@@ -351,6 +352,15 @@ def _is_superuser(request):
     return True
 
 
+def _is_word_start(username):
+    user = _get_user_by_username(username)
+    wordplan = user.wordplan_set.all()
+    if wordplan:
+        return wordplan[0]
+    return False
+    
+
+
 def _liked_blog(username, aid):
     user = _get_user_by_username(username)
     return user.like_set.filter(tp='B').filter(to_id=aid)
@@ -557,6 +567,22 @@ def _sign(username):
         user.last_signed = timezone.now()
         user.save()
 
+def _start_word_plan(request):
+    post = request.POST
+    username = _logined(request)
+    user = _get_user_by_username(username)
+    if post.get('cet4'):
+        words = post.get('cet4')
+        WordPlan.objects.create(user=user,groop='cet4',num=words)
+    elif post.get('cet6'):
+        words = post.get('cet6')
+        WordPlan.objects.create(user=user,groop='cet6',num=words)
+    elif post.get('tem8'):
+        words = post.get('tem8')
+        WordPlan.objects.create(user=user,groop='tem8',num=words)
+    else:
+        return False
+    return True   
 
 def _string_to_base64(string):
     return base64.b64encode(string.encode('utf8')).decode('utf8')

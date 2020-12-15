@@ -1,7 +1,7 @@
 import os
 from urllib.parse import quote
 
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import FileResponse
 from django.http import Http404
 
@@ -69,6 +69,10 @@ def base64(request):
 
 def word(request):
     message = function._get_logined_message(request)
-    if request.method == "POST":
-        print(request.POST)
+    if message['logined']:
+        message['start'] = function._is_word_start(message['username'])
+    if request.method == "POST" and not message.get('start'):
+        res=function._start_word_plan(request)
+        if res:
+            return redirect('.')
     return render(request,'tools/word.html',message)
